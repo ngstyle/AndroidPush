@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">医动力医疗</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="jiguang_alias">极光别名</string>
+    <string name="fetch_alias">获取别名</string>
+    <string name="update_alias">更新别名</string>
+</resources>
