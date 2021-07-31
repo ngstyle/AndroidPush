@@ -13,9 +13,16 @@
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/GyennoMedical/xiaomi/src/main/res/layout/fragment_dashboard.xml" value="0.1" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/GyennoMedical/xiaomi/src/main/res/layout/fragment_home.xml" value="0.17291666666666666" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/GyennoMedical/xiaomi/src/main/res/layout/fragment_notifications.xml" value="0.17291666666666666" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.12907608695652173" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.12907608695652173" />
+        <entry key="vendor/src/main/res/layout/activity_main.xml" value="0.12907608695652173" />
+        <entry key="vendor/src/main/res/layout/fragment_dashboard.xml" value="0.12907608695652173" />
+        <entry key="vendor/src/main/res/layout/fragment_home.xml" value="0.35926308943520946" />
+        <entry key="vendor/src/main/res/layout/fragment_notifications.xml" value="0.12907608695652173" />
       </map>
     </option>
   </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

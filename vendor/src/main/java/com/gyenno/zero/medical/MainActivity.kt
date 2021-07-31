@@ -8,6 +8,10 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.gyenno.zero.medical.databinding.ActivityMainBinding
+import com.huawei.hms.aaid.HmsInstanceId
+import com.xiaomi.mipush.sdk.MiPushClient
+import kotlinx.coroutines.*
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,5 +35,7 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        Timber.e("Mi RegId:%s", MiPushClient.getRegId(this))
     }
 }
