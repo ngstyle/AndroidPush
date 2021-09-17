@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_order"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="序号"
+            app:layout_constraintHorizontal_weight="2"
+            android:gravity="start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_send_time"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_send_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="发送时间"
+            app:layout_constraintHorizontal_weight="10"
+            android:gravity="center"
+            app:layout_constraintEnd_toStartOf="@+id/tv_receive_time"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_order"
+            app:layout_constraintTop_toTopOf="@+id/tv_order" />
+
+        <TextView
+            android:id="@+id/tv_receive_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="接收时间"
+            app:layout_constraintHorizontal_weight="5"
+            android:gravity="center"
+            app:layout_constraintEnd_toStartOf="@+id/tv_cost_time"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_send_time"
+            app:layout_constraintTop_toTopOf="@+id/tv_send_time" />
+
+        <TextView
+            android:id="@+id/tv_cost_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="耗时(ms)"
+            app:layout_constraintHorizontal_weight="5"
+            android:gravity="end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_receive_time"
+            app:layout_constraintTop_toTopOf="@+id/tv_receive_time" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

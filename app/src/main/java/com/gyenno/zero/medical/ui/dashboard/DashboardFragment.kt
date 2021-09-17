@@ -1,15 +1,15 @@
 package com.gyenno.zero.medical.ui.dashboard
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.gyenno.zero.medical.R
+import com.gyenno.zero.medical.NotificationMessageLiveData
 import com.gyenno.zero.medical.databinding.FragmentDashboardBinding
+import timber.log.Timber
 
 class DashboardFragment : Fragment() {
 
@@ -24,18 +24,42 @@ class DashboardFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
-
+    ): View {
+        dashboardViewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
+    }
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+    @SuppressLint("SetTextI18n")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.btnStart.setOnClickListener {
+            val count = binding.editTextNumber.text.toString()
+            if (count.isNotEmpty())
+                dashboardViewModel.pushMessage(count.toInt())
+            else
+                dashboardViewModel.pushMessage(2)
+        }
+
+        binding.btnStop.setOnClickListener {
+            dashboardViewModel.stopPush()
+        }
+
+        val messageAdapter = MessageAdapter()
+        binding.recyclerView.adapter = messageAdapter
+        dashboardViewModel.allMessages.observe(viewLifecycleOwner) {
+            Timber.i("allMessages: ${it.size}")
+            messageAdapter.submitList(it)
+            binding.recyclerView.scrollToPosition(it.size - 1)
+        }
+
+        dashboardViewModel.current.observe(viewLifecycleOwner) {
+            binding.tvCurrent.text = "当前第 $it 次"
+        }
+
+        NotificationMessageLiveData.observe(viewLifecycleOwner) {
+            dashboardViewModel.updateMessage(it)
+        }
     }
 
     override fun onDestroyView() {

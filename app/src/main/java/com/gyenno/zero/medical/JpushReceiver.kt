@@ -1,10 +1,10 @@
 package com.gyenno.zero.medical
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import cn.jpush.android.api.CmdMessage
 import cn.jpush.android.api.JPushMessage
+import cn.jpush.android.api.NotificationMessage
 import cn.jpush.android.service.JPushMessageReceiver
 import timber.log.Timber
 
@@ -41,6 +41,13 @@ class JpushReceiver: JPushMessageReceiver() {
         }
     }
 
+    override fun onNotifyMessageArrived(context: Context?, notificationMessage: NotificationMessage?) {
+        super.onNotifyMessageArrived(context, notificationMessage)
+        notificationMessage?.let {
+            NotificationMessageLiveData.postValue(it)
+        }
+    }
+
     override fun onAliasOperatorResult(context: Context?, message: JPushMessage) {
         super.onAliasOperatorResult(context, message)
 //        val sequence = message.sequence
@@ -68,6 +75,5 @@ class JpushReceiver: JPushMessageReceiver() {
     }
 }
 
-object AliasLiveData: MutableLiveData<JPushMessage>() {
-
-}
+object AliasLiveData: MutableLiveData<JPushMessage>()
+object NotificationMessageLiveData: MutableLiveData<NotificationMessage>()

@@ -9,6 +9,6 @@ dependencyResolutionManagement {
         }
     }
 }
-rootProject.name = "医动力医疗"
+rootProject.name = "AndroidPush"
 include ':app'
-include ':vendor'
+//include ':vendor'
