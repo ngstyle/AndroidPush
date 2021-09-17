@@ -43,6 +43,7 @@ class JpushReceiver: JPushMessageReceiver() {
 
     override fun onNotifyMessageArrived(context: Context?, notificationMessage: NotificationMessage?) {
         super.onNotifyMessageArrived(context, notificationMessage)
+        Timber.e("onNotifyMessageArrived")
         notificationMessage?.let {
             NotificationMessageLiveData.postValue(it)
         }

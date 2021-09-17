@@ -57,6 +57,7 @@ class DashboardFragment : Fragment() {
             binding.tvCurrent.text = "当前第 $it 次"
         }
 
+        // NotificationMessageLiveData 是单例， 应用退出可能还存活，可再次订阅数据
         NotificationMessageLiveData.observe(viewLifecycleOwner) {
             dashboardViewModel.updateMessage(it)
         }
