@@ -67,13 +67,12 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
         Timber.i(notificationMessage.toString())
         viewModelScope.launch {
             messageDatabaseDao.get(notificationMessage.notificationContent)?.let { entity ->
-                if (entity.receiveTimeMilli != null)
-                    return@launch
-
-                entity.messageId = notificationMessage.msgId
-                entity.receiveTimeMilli = System.currentTimeMillis()
-                entity.costTime = "${(entity.sentTimeMilli?:0) - entity.sendTimeMilli} ms | ${(entity.receiveTimeMilli!! - entity.sendTimeMilli) / 1000} s"
-                messageDatabaseDao.update(entity)
+                if (entity.receiveTimeMilli == null) {
+                    entity.messageId = notificationMessage.msgId
+                    entity.receiveTimeMilli = System.currentTimeMillis()
+                    entity.costTime = "${(entity.sentTimeMilli?:0) - entity.sendTimeMilli} ms | ${(entity.receiveTimeMilli!! - entity.sendTimeMilli) / 1000} s"
+                    messageDatabaseDao.update(entity)
+                }
             }
         }
     }
